@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>PulseSense | Heart Rate & SpO₂ Monitor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">♥</div>
+        <div><b>PulseSense</b><small>ESP32 HEALTH MONITOR</small></div>
+        <button class="close-menu" id="closeMenu" aria-label="Tutup menu">×</button>
+      </div>
+      <div class="side-label">MENU MONITORING</div>
+      <nav>
+        <a class="nav-item active" href="#overview"><span>▦</span> Dashboard</a>
+        <a class="nav-item" href="#vitals"><span>♥</span> Data Vital</a>
+        <a class="nav-item" href="#charts"><span>⌁</span> Grafik Real-Time</a>
+        <a class="nav-item" href="#device"><span>◉</span> Status Perangkat</a>
+      </nav>
+      <section class="system-card">
+        <div class="system-head"><span>SYSTEM STATUS</span><span class="pill" id="connectionPill">● Offline</span></div>
+        <div class="system-row"><span>ESP32</span><b id="espStatus">Menunggu</b></div>
+        <div class="system-row"><span>Sensor</span><b id="sensorStatus">Menunggu</b></div>
+        <div class="system-row"><span>Database</span><b id="dbStatus">Menunggu</b></div>
+      </section>
+      <div class="profile">
+        <div class="avatar">PS</div>
+        <div><b>PulseSense Monitor</b><small>IoT Monitoring System</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Buka menu">☰</button>
+        <div><div class="eyebrow">INTERNET OF THINGS / HEALTHCARE</div><h1>Heart Rate & SpO₂ Monitor</h1></div>
+        <div class="top-status"><span class="live-dot"></span><span id="topStatus">Menunggu data</span></div>
+      </header>
+
+      <section class="welcome" id="overview">
+        <div>
+          <div class="eyebrow cyan">REAL-TIME HEALTH MONITORING</div>
+          <h2>Pantau kondisi vital<br>secara <em>langsung.</em></h2>
+          <p>Monitoring detak jantung dan saturasi oksigen berbasis ESP32, sensor MAX30102, dan teknologi IoT.</p>
+        </div>
+        <div class="welcome-icon">♥<span>+</span></div>
+      </section>
+
+      <section class="section-heading" id="vitals">
+        <div><h2>Ringkasan Pengukuran</h2><p>Data terbaru dari sensor MAX30102</p></div>
+        <div class="updated">Pembaruan: <b id="lastUpdate">Belum ada data</b></div>
+      </section>
+
+      <section class="metric-grid">
+        <article class="metric-card bpm-card">
+          <div class="metric-top"><span>HEART RATE</span><span class="metric-icon">♥</span></div>
+          <div class="metric-value"><strong id="bpmValue">--</strong><span>BPM</span></div>
+          <div class="metric-foot"><span id="bpmStatus" class="state neutral">Menunggu data</span><small>Detak per menit</small></div>
+          <div class="mini-wave">∿ ∿ ∿ ∿ ∿ ∿ ∿</div>
+        </article>
+        <article class="metric-card spo2-card">
+          <div class="metric-top"><span>OXYGEN SATURATION</span><span class="metric-icon">◉</span></div>
+          <div class="metric-value"><strong id="spo2Value">--</strong><span>% SpO₂</span></div>
+          <div class="metric-foot"><span id="spo2Status" class="state neutral">Menunggu data</span><small>Estimasi saturasi oksigen</small></div>
+          <div class="mini-wave purple">﹏ ﹏ ﹏ ﹏ ﹏ ﹏</div>
+        </article>
+      </section>
+
+      <section class="chart-panel" id="charts">
+        <div class="panel-heading"><div><h2>Grafik Monitoring Real-Time</h2><p>Perubahan nilai pengukuran terbaru</p></div><span class="live-label"><i></i> LIVE</span></div>
+        <div class="chart-wrap"><canvas id="vitalsChart"></canvas></div>
+        <div class="chart-legend"><span><i class="legend-cyan"></i> Heart Rate (BPM)</span><span><i class="legend-purple"></i> SpO₂ (%)</span></div>
+      </section>
+
+      <section class="bottom-grid" id="device">
+        <article class="info-panel">
+          <div class="panel-heading"><div><h2>Status Perangkat</h2><p>Kondisi konektivitas sistem</p></div><span class="device-symbol">⌘</span></div>
+          <div class="device-row"><span>ESP32</span><b id="deviceEsp">Belum terhubung</b></div>
+          <div class="device-row"><span>MAX30102</span><b id="deviceSensor">Menunggu</b></div>
+          <div class="device-row"><span>Firebase Realtime Database</span><b id="deviceFirebase">Menunggu</b></div>
+        </article>
+        <article class="info-panel note-panel">
+          <div class="panel-heading"><div><h2>Informasi Pengukuran</h2><p>Panduan penggunaan sensor</p></div><span class="device-symbol purple-symbol">ⓘ</span></div>
+          <p>Letakkan jari dengan stabil di atas sensor MAX30102. Hindari gerakan berlebihan dan cahaya luar yang kuat selama pengukuran.</p>
+          <div class="notice">Data prototipe untuk pembelajaran, bukan alat diagnosis medis.</div>
+        </article>
+      </section>
+      <footer>PulseSense IoT Monitor · ESP32 + MAX30102 · Firebase</footer>
+    </main>
+  </div>
+  <div class="mobile-scrim" id="scrim"></div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
