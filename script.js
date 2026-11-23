@@ -4,13 +4,28 @@ import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10
 
 // GANTI seluruh nilai berikut dari Firebase Console > Project settings > Your apps.
 const firebaseConfig = {
-  apiKey: "GANTI_API_KEY",
-  authDomain: "GANTI_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://GANTI_PROJECT_ID-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "GANTI_PROJECT_ID",
-  storageBucket: "GANTI_PROJECT_ID.appspot.com",
-  messagingSenderId: "GANTI_MESSAGING_SENDER_ID",
-  appId: "GANTI_APP_ID"
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDn3RE8OaK-lMh6Zx-vDLkvOVXejjRdsSI",
+  authDomain: "heartrate-spo2-monitor.firebaseapp.com",
+  databaseURL: "https://heartrate-spo2-monitor-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "heartrate-spo2-monitor",
+  storageBucket: "heartrate-spo2-monitor.firebasestorage.app",
+  messagingSenderId: "858885346640",
+  appId: "1:858885346640:web:9e52f5790317c8218d8855",
+  measurementId: "G-VERC1PLSKM"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 };
 
 const $ = (id) => document.getElementById(id);
